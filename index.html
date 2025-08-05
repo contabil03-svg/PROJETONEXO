@@ -39,7 +39,8 @@
 
   setInterval(() => {
     current = (current + 1) % sections.length;
-    const newSrc = `${baseUrl}&reportSection=${sections[current]}`;
+    const timestamp = new Date().getTime(); // Parâmetro para evitar cache
+    const newSrc = `${baseUrl}&reportSection=${sections[current]}&ts=${timestamp}`;
     document.getElementById("powerbi-frame").src = newSrc;
   }, interval);
 </script>
