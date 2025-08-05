@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Relatório Power BI - Rotação Automática</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<iframe id="powerbi-frame"
+        src="https://app.powerbi.com/view?r=eyJrIjoiZjdkZDRmOTQtNmUwMC00MmM5LWFjZmEtYjFiZjA0MjM0ZjJmIiwidCI6ImVkNjkzYWIxLTFhZGQtNDJhMy04NzY1LWJjMjkzYjU4ZmQyMiJ9&reportSection=ReportSection"
+        allowfullscreen="true">
+</iframe>
+
+<script>
+  const sections = [
+    "ReportSection",   // 1. Departamento Fiscal
+    "ReportSection1",  // 2. Departamento ADM
+    "ReportSection2",  // 3. Departamento Pessoal
+    "ReportSection3",  // 4. Departamento Contábil
+    "ReportSection4"   // 5. Clientes Novos
+  ];
+
+  const baseUrl = "https://app.powerbi.com/view?r=eyJrIjoiZjdkZDRmOTQtNmUwMC00MmM5LWFjZmEtYjFiZjA0MjM0ZjJmIiwidCI6ImVkNjkzYWIxLTFhZGQtNDJhMy04NzY1LWJjMjkzYjU4ZmQyMiJ9";
+  let current = 0;
+  const interval = 10000; // Tempo em milissegundos (10 segundos)
+
+  setInterval(() => {
+    current = (current + 1) % sections.length;
+    const newSrc = `${baseUrl}&reportSection=${sections[current]}`;
+    document.getElementById("powerbi-frame").src = newSrc;
+  }, interval);
+</script>
+
+</body>
+</html>
