@@ -19,31 +19,27 @@
 </head>
 <body>
 
-<iframe id="powerbi-frame"
-        src="https://app.powerbi.com/reportEmbed?reportId=e3f6d65d-753d-4498-8521-d87f5ffcdee5&autoAuth=true&ctid=ed693ab1-1add-42a3-8765-bc293b58fd22&reportSection=ReportSection"
-        allowfullscreen="true">
-</iframe>
+  <!-- Iframe para exibir o relatório Power BI -->
+  <iframe id="powerbi-frame"
+          src="https://app.powerbi.com/reportEmbed?reportId=e3f6d65d-753d-4498-8521-d87f5ffcdee5&autoAuth=true&ctid=ed693ab1-1add-42a3-8765-bc293b58fd22&reportSection=ReportSection"
+          allowfullscreen="true">
+  </iframe>
 
-<script>
-  const sections = [
-    "ReportSection",    // Página 1
-    "ReportSection1",   // Página 2
-    "ReportSection2",   // Página 3
-    "ReportSection3",   // Página 4
-    "ReportSection4"    // Página 5
-  ];
+  <script>
+    // Lista das páginas do relatório (ajuste conforme necessário)
+    const sections = [
+      "ReportSection",    // Página 1
+      "ReportSection1",   // Página 2
+      "ReportSection2",   // Página 3
+      "ReportSection3",   // Página 4
+      "ReportSection4"    // Página 5
+    ];
 
-  const baseUrl = "https://app.powerbi.com/reportEmbed?reportId=e3f6d65d-753d-4498-8521-d87f5ffcdee5&autoAuth=true&ctid=ed693ab1-1add-42a3-8765-bc293b58fd22";
-  let current = 0;
-  const interval = 10000; // 10 segundos
+    const baseUrl = "https://app.powerbi.com/reportEmbed?reportId=e3f6d65d-753d-4498-8521-d87f5ffcdee5&autoAuth=true&ctid=ed693ab1-1add-42a3-8765-bc293b58fd22";
+    let current = 0;
+    const interval = 10000; // Tempo em milissegundos (10 segundos)
 
-  setInterval(() => {
-    current = (current + 1) % sections.length;
-    const timestamp = new Date().getTime(); // evita cache
-    const newSrc = `${baseUrl}&reportSection=${sections[current]}&ts=${timestamp}`;
-    document.getElementById("powerbi-frame").src = newSrc;
-  }, interval);
-</script>
-
-</body>
-</html>
+    setInterval(() => {
+      current = (current + 1) % sections.length;
+      const timestamp = new Date().getTime(); // Evita cache
+      const ne
